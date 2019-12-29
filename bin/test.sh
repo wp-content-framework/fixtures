@@ -9,3 +9,4 @@ current=$(
 
 bash "${current}/php/phpcs.sh"
 bash "${current}/php/phpmd.sh"
+bash "${current}/php/phpunit.sh"

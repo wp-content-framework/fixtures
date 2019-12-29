@@ -18,7 +18,7 @@
     "prepare": [
       "mkdir -p ./fixtures/.git",
       "chmod -R +w ./fixtures/.git && rm -rdf ./fixtures",
-      "rm -f ./phpcs.xml ./phpmd.xml",
+      "rm -f ./phpcs.xml ./phpmd.xml ./phpunit.xml",
       "git clone --depth=1 https://github.com/wp-content-framework/fixtures.git fixtures",
       "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/prepare.sh"
     ],

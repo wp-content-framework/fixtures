@@ -20,13 +20,13 @@
       "chmod -R +w ./fixtures/.git && rm -rdf ./fixtures",
       "rm -f ./phpcs.xml ./phpmd.xml",
       "git clone --depth=1 https://github.com/wp-content-framework/fixtures.git fixtures",
-      "WORKSPACE=$(cd $(dirname $0); pwd) bash ./fixtures/bin/prepare.sh"
+      "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/prepare.sh"
     ],
-    "test": "WORKSPACE=$(cd $(dirname $0); pwd) bash ./fixtures/bin/test.sh",
-    "phpcs": "WORKSPACE=$(cd $(dirname $0); pwd) bash ./fixtures/bin/php/phpcs.sh",
-    "phpmd": "WORKSPACE=$(cd $(dirname $0); pwd) bash ./fixtures/bin/php/phpmd.sh",
-    "phpcbf": "WORKSPACE=$(cd $(dirname $0); pwd) bash ./fixtures/bin/php/phpcbf.sh",
-    "packages": "WORKSPACE=$(cd $(dirname $0); pwd) bash ./fixtures/bin/packages.sh"
+    "test": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/test.sh",
+    "phpcs": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpcs.sh",
+    "phpmd": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpmd.sh",
+    "phpcbf": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpcbf.sh",
+    "packages": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/packages.sh"
   }
 ```
 

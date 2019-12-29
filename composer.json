@@ -1,0 +1,13 @@
+{
+  "name": "wp-content-framework/fixtures",
+  "description": "fixtures",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Technote",
+      "email": "technote.space@gmail.com",
+      "homepage": "https://technote.space"
+    }
+  ]
+}

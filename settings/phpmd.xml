@@ -9,10 +9,16 @@
     </rule>
     <rule ref="rulesets/codesize.xml">
         <exclude name="ExcessiveClassComplexity"/>
+        <exclude name="TooManyPublicMethods"/>
     </rule>
     <rule ref="rulesets/codesize.xml/ExcessiveClassComplexity">
         <properties>
             <property name="maximum" value="100"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/codesize.xml/TooManyPublicMethods">
+        <properties>
+            <property name="maxmethods" value="25"/>
         </properties>
     </rule>
     <rule ref="rulesets/controversial.xml">
@@ -23,6 +29,14 @@
         <exclude name="CamelCasePropertyName"/>
     </rule>
     <rule ref="rulesets/design.xml"/>
-    <rule ref="rulesets/naming.xml"/>
+    <rule ref="rulesets/naming.xml">
+        <exclude name="LongVariable"/>
+    </rule>
+    <rule ref="rulesets/naming.xml/LongVariable">
+        <properties>
+            <!-- default = 20 -->
+            <property name="maximum" value="30"/>
+        </properties>
+    </rule>
     <rule ref="rulesets/unusedcode.xml"/>
 </ruleset>

@@ -7,6 +7,11 @@ if [[ ! -f "${WORKSPACE}/vendor/bin/phpunit" ]]; then
   exit
 fi
 
+if [[ -n "${CI}" ]]; then
+  echo "Still in preparation..."
+  exit
+fi
+
 echo ""
 echo ">> Run composer phpunit."
 "${WORKSPACE}"/vendor/bin/phpunit

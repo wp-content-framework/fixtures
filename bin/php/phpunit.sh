@@ -14,4 +14,4 @@ fi
 
 echo ""
 echo ">> Run composer phpunit."
-"${WORKSPACE}"/vendor/bin/phpunit
+"${WORKSPACE}"/vendor/bin/phpunit --stop-on-failure --colors=always --no-coverage

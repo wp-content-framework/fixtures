@@ -39,7 +39,14 @@
     </rule>
     <rule ref="rulesets/design.xml"/>
     <rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable"/>
         <exclude name="LongVariable"/>
+    </rule>
+    <rule ref="rulesets/naming.xml/ShortVariable">
+        <properties>
+            <!-- default = 3 -->
+            <property name="minimum" value="2"/>
+        </properties>
     </rule>
     <rule ref="rulesets/naming.xml/LongVariable">
         <properties>

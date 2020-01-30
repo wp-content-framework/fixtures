@@ -22,4 +22,8 @@ fi
 
 echo ""
 echo ">> Run composer phpmd."
-"${WORKSPACE}"/vendor/bin/phpmd "${targets}" ansi "${WORKSPACE}/phpmd.xml" "${exclude}"
+if [[ -n "${GIT_DIFF}" ]]; then
+  "${WORKSPACE}"/vendor/bin/phpmd "$(eval echo "${GIT_DIFF}")" "${targets}" ansi "${WORKSPACE}/phpmd.xml" "${exclude}"
+else
+  "${WORKSPACE}"/vendor/bin/phpmd "${targets}" ansi "${WORKSPACE}/phpmd.xml" "${exclude}"
+fi

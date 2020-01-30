@@ -7,14 +7,6 @@ if [[ ! -f "${WORKSPACE}/vendor/bin/phpmd" ]]; then
   exit
 fi
 
-targets="./src/"
-if [[ -d "${WORKSPACE}/configs" ]]; then
-  targets="${targets},./configs/"
-fi
-if [[ -d "${WORKSPACE}/tests" ]]; then
-  targets="${targets},./tests/"
-fi
-
 exclude=""
 if [[ -d "${WORKSPACE}/src/views" ]]; then
   exclude="--exclude ./src/views/*"
@@ -23,7 +15,14 @@ fi
 echo ""
 echo ">> Run composer phpmd."
 if [[ -n "${GIT_DIFF}" ]]; then
-  "${WORKSPACE}"/vendor/bin/phpmd "$(eval echo "${GIT_DIFF}")" "${targets}" ansi "${WORKSPACE}/phpmd.xml" "${exclude}"
+  "${WORKSPACE}"/vendor/bin/phpmd "$(eval echo "${GIT_DIFF}")" ansi "${WORKSPACE}/phpmd.xml" "${exclude}"
 else
+  targets="./src/"
+  if [[ -d "${WORKSPACE}/configs" ]]; then
+    targets="${targets},./configs/"
+  fi
+  if [[ -d "${WORKSPACE}/tests" ]]; then
+    targets="${targets},./tests/"
+  fi
   "${WORKSPACE}"/vendor/bin/phpmd "${targets}" ansi "${WORKSPACE}/phpmd.xml" "${exclude}"
 fi

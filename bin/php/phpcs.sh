@@ -10,7 +10,8 @@ fi
 echo ""
 echo ">> Run composer phpcs."
 if [[ -n "${GIT_DIFF}" ]]; then
-  "${WORKSPACE}"/vendor/bin/phpcs --standard="${WORKSPACE}/phpcs.xml" "$(eval echo "${GIT_DIFF}")"
+  # shellcheck disable=SC2046
+  "${WORKSPACE}"/vendor/bin/phpcs --standard="${WORKSPACE}/phpcs.xml" $(eval echo "${GIT_DIFF}")
 else
   "${WORKSPACE}"/vendor/bin/phpcs --standard="${WORKSPACE}/phpcs.xml"
 fi

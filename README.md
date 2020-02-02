@@ -13,6 +13,8 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Example
+### `composer.json`
+
 ```
   "scripts": {
     "prepare": [
@@ -30,6 +32,12 @@
     "phpunit": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpunit.sh",
     "packages": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/packages.sh"
   }
+```
+
+### `.gitignore`
+
+```
+/fixtures
 ```
 
 ## Author

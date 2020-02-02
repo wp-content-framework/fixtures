@@ -8,6 +8,8 @@
 **Table of Contents**
 
 - [Example](#example)
+  - [`composer.json`](#composerjson)
+  - [`.gitignore`](#gitignore)
 - [Author](#author)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->

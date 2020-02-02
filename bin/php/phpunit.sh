@@ -19,4 +19,5 @@ fi
 
 echo ""
 echo ">> Run composer phpunit."
-"${WORKSPACE}"/vendor/bin/phpunit "${options}"
+# shellcheck disable=SC2086
+"${WORKSPACE}"/vendor/bin/phpunit ${options}

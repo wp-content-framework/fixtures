@@ -21,8 +21,17 @@ else
   if [[ -d "${WORKSPACE}/configs" ]]; then
     targets="${targets},./configs/"
   fi
+  if [[ -d "${WORKSPACE}/config" ]]; then
+    targets="${targets},./config/"
+  fi
   if [[ -d "${WORKSPACE}/tests" ]]; then
     targets="${targets},./tests/"
+  fi
+  if [[ -d "${WORKSPACE}/resources" ]]; then
+    targets="${targets},./resources/"
+  fi
+  if [[ -d "${WORKSPACE}/routes" ]]; then
+    targets="${targets},./routes/"
   fi
   "${WORKSPACE}"/vendor/bin/phpmd "${targets}" ansi "${WORKSPACE}/phpmd.xml" "${exclude}"
 fi

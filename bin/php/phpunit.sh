@@ -7,11 +7,16 @@ if [[ ! -f "${WORKSPACE}/vendor/bin/phpunit" ]]; then
   exit
 fi
 
-if [[ -n "${CI}" ]]; then
+if [[ -n "${CI}" && -z "${COVERAGE}" ]]; then
   echo "Still in preparation..."
   exit
 fi
 
+options="--stop-on-failure --colors=always"
+if [[ -z "${COVERAGE}" ]]; then
+  options="${options} --no-coverage"
+fi
+
 echo ""
 echo ">> Run composer phpunit."
-"${WORKSPACE}"/vendor/bin/phpunit --stop-on-failure --colors=always --no-coverage
+"${WORKSPACE}"/vendor/bin/phpunit "${options}"

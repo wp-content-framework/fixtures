@@ -16,22 +16,42 @@
 ### `composer.json`
 
 ```
-  "scripts": {
-    "prepare": [
-      "mkdir -p ./fixtures/.git",
-      "chmod -R +w ./fixtures/.git && rm -rdf ./fixtures",
-      "rm -f ./phpcs.xml ./phpmd.xml ./phpunit.xml",
-      "git clone --depth=1 https://github.com/wp-content-framework/fixtures.git fixtures",
-      "@packages",
-      "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/prepare.sh"
-    ],
-    "test": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/test.sh",
-    "phpcs": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpcs.sh",
-    "phpmd": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpmd.sh",
-    "phpcbf": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpcbf.sh",
-    "phpunit": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpunit.sh",
-    "packages": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/packages.sh"
-  }
+    "scripts": {
+        "prepare": [
+            "mkdir -p ./fixtures/.git",
+            "chmod -R +w ./fixtures/.git && rm -rdf ./fixtures",
+            "rm -f ./phpcs.xml ./phpmd.xml ./phpunit.xml",
+            "git clone --depth=1 https://github.com/wp-content-framework/fixtures.git fixtures",
+            "@packages",
+            "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/prepare.sh"
+        ],
+        "test": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/test.sh",
+        "phpcs": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpcs.sh",
+        "phpmd": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpmd.sh",
+        "phpcbf": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpcbf.sh",
+        "phpunit": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpunit.sh",
+        "packages": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/packages.sh"
+    }
+```
+
+```
+    "scripts": {
+        "setup": [
+            "@prepare",
+            "composer install"
+        ],
+        "prepare": [
+            "mkdir -p ./fixtures/.git",
+            "chmod -R +w ./fixtures/.git && rm -rdf ./fixtures",
+            "git clone --depth=1 https://github.com/wp-content-framework/fixtures.git fixtures",
+        ],
+        "test": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/test.sh",
+        "phpcs": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpcs.sh",
+        "phpmd": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpmd.sh",
+        "phpcbf": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpcbf.sh",
+        "phpunit": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} COVERAGE=1 bash ./fixtures/bin/php/phpunit.sh",
+        "phpunit:no": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpunit.sh",
+        "packages": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/packages.sh"
 ```
 
 ### `.gitignore`

@@ -9,4 +9,9 @@ fi
 
 echo ""
 echo ">> Run composer phpcbf."
-"${WORKSPACE}"/vendor/bin/phpcbf --standard="${WORKSPACE}/phpcs.xml"
+if [[ -n "${GIT_DIFF}" ]]; then
+  # shellcheck disable=SC2046
+  "${WORKSPACE}"/vendor/bin/phpcbf --standard="${WORKSPACE}/phpcs.xml" $(eval echo "${GIT_DIFF}")
+else
+  "${WORKSPACE}"/vendor/bin/phpcbf --standard="${WORKSPACE}/phpcs.xml"
+fi

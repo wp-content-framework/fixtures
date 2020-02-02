@@ -39,13 +39,13 @@
 ```
     "scripts": {
         "setup": [
-            "@prepare",
-            "composer install"
+            "@prepare"
         ],
         "prepare": [
             "mkdir -p ./fixtures/.git",
             "chmod -R +w ./fixtures/.git && rm -rdf ./fixtures",
             "git clone --depth=1 https://github.com/wp-content-framework/fixtures.git fixtures",
+            "composer install"
         ],
         "test": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/test.sh",
         "phpcs": "WORKSPACE=${WORKSPACE:-$(cd $(dirname $0); pwd)} bash ./fixtures/bin/php/phpcs.sh",

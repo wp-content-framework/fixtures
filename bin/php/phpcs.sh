@@ -11,7 +11,7 @@ echo ""
 echo ">> Run composer phpcs."
 if [[ -n "${GIT_DIFF}" ]]; then
   # shellcheck disable=SC2046
-  "${WORKSPACE}"/vendor/bin/phpcs --standard="${WORKSPACE}/phpcs.xml" $(eval echo "${GIT_DIFF}")
+  "${WORKSPACE}"/vendor/bin/phpcs --cache --standard="${WORKSPACE}/phpcs.xml" $(eval echo "${GIT_DIFF}")
 else
-  "${WORKSPACE}"/vendor/bin/phpcs --standard="${WORKSPACE}/phpcs.xml"
+  "${WORKSPACE}"/vendor/bin/phpcs --cache --standard="${WORKSPACE}/phpcs.xml"
 fi

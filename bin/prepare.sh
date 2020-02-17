@@ -8,6 +8,10 @@ current=$(
 )
 SETTINGS_DIR="${current}/../settings"
 
+if [[ -z "${LINT}" ]]; then
+  bash "${current}/packages.sh"
+fi
+
 composer install --working-dir="${WORKSPACE}" --no-interaction --prefer-dist --no-suggest
 
 echo ""

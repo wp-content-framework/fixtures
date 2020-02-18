@@ -14,8 +14,8 @@ fi
 
 echo ""
 echo ">> Run composer phpmd."
-if [[ -n "${GIT_DIFF}" ]]; then
-  "${WORKSPACE}"/vendor/bin/phpmd "$(eval echo "${GIT_DIFF}")" ansi "${WORKSPACE}/phpmd.xml" "${exclude}"
+if [[ -n "${GIT_DIFF_FILTERED}" ]]; then
+  "${WORKSPACE}"/vendor/bin/phpmd "$(eval echo "${GIT_DIFF_FILTERED}")" ansi "${WORKSPACE}/phpmd.xml" "${exclude}"
 else
   targets="./src/"
   if [[ -d "${WORKSPACE}/configs" ]]; then

@@ -14,7 +14,7 @@ fi
 
 echo ""
 echo ">> Run composer phpmd."
-if [[ -n "${GIT_DIFF_FILTERED}" ]]; then
+if [[ -n "${GIT_DIFF_FILTERED}" ]] && [[ -z "${MATCHED_FILES}" ]]; then
   "${WORKSPACE}"/vendor/bin/phpmd "$(eval echo "${GIT_DIFF_FILTERED}")" ansi "${WORKSPACE}/phpmd.xml" "${exclude}"
 else
   targets="./src/"

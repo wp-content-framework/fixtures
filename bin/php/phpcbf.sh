@@ -9,7 +9,7 @@ fi
 
 echo ""
 echo ">> Run composer phpcbf."
-if [[ -n "${GIT_DIFF_FILTERED}" ]]; then
+if [[ -n "${GIT_DIFF_FILTERED}" ]] && [[ -z "${MATCHED_FILES}" ]]; then
   # shellcheck disable=SC2046
   "${WORKSPACE}"/vendor/bin/phpcbf --standard="${WORKSPACE}/phpcs.xml" $(eval echo "${GIT_DIFF_FILTERED}")
 else
